@@ -22,6 +22,8 @@ public class MainActivity extends AppCompatActivity {
         textViewStart = findViewById(R.id.textViewStart);
         buttonStart = findViewById(R.id.buttonStart);
 
+        copyDatabase();
+
         buttonStart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -30,5 +32,16 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    public void copyDatabase(){
+        try {
+
+            DatabaseCopyHelper helper = new DatabaseCopyHelper(MainActivity.this);
+            helper.createDataBase();
+
+        } catch (Exception e){
+            e.printStackTrace();
+        }
     }
 }
