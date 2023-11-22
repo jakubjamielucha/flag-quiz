@@ -3,10 +3,10 @@ package com.example.flagquiz;
 public class FlagsModel {
 
     private int flag_id;
-    private String flag_name, flag_image;
+    private String flag_name;
+    private String flag_image;
 
-    public FlagsModel(){
-
+    public FlagsModel() {
     }
 
     public FlagsModel(int flag_id, String flag_name, String flag_image) {
