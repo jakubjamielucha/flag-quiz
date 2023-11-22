@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 
 public class QuizActivity extends AppCompatActivity {
 
@@ -23,6 +24,10 @@ public class QuizActivity extends AppCompatActivity {
 
     private FlagsModel correctFlag;
     private ArrayList<FlagsModel> wrongOptionsList;
+
+    HashSet<FlagsModel> mixOptions = new HashSet<>();
+
+    ArrayList<FlagsModel> options = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,14 +78,38 @@ public class QuizActivity extends AppCompatActivity {
 
             }
         });
+
+        imageViewNext.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                question++;
+                loadQuestions();
+            }
+        });
     }
 
     public void loadQuestions(){
-        textViewQuestion.setText("Question: " + questionsList);
+        textViewQuestion.setText("Question: " + question+1);
         correctFlag = questionsList.get(question);
 
         imageViewFlag.setImageResource(getResources().getIdentifier(correctFlag.getFlag_image(),
                 "drawable", getPackageName()));
         wrongOptionsList = new FlagsDAO().getRandomThreeOptions(fdatabase, correctFlag.getFlag_id());
+        mixOptions.clear();
+        mixOptions.add(correctFlag);
+        mixOptions.add(wrongOptionsList.get(0));
+        mixOptions.add(wrongOptionsList.get(1));
+        mixOptions.add(wrongOptionsList.get(2));
+
+        options.clear();
+        for(FlagsModel flg: mixOptions){
+            options.add(flg);
+        }
+        buttonA.setText(options.get(0).getFlag_name());
+        buttonB.setText(options.get(1).getFlag_name());
+        buttonC.setText(options.get(2).getFlag_name());
+        buttonD.setText(options.get(3).getFlag_name());
+
+
     }
 }
