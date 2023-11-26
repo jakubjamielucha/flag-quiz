@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/black"
+    android:background="@drawable/gradient_background"
     tools:context=".ResultActivity">
 
     <Button
@@ -12,7 +12,7 @@
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
-        android:background="@color/gold_500"
+        android:background="@color/gold_700"
         android:text="play again"
         android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@+id/buttonQuit"
@@ -25,7 +25,7 @@
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="32dp"
-        android:background="@color/gold_500"
+        android:background="@color/gold_700"
         android:text="quit game"
         android:textColor="@color/black"
         android:textSize="16sp"
